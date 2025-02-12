@@ -19,7 +19,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
         }
-        input, button {
+        input, select, button {
             width: 90%;
             padding: 10px;
             margin: 10px 0;
@@ -37,14 +37,20 @@
 
 <div class="container">
     <h2>Interest Calculator</h2>
+    
     <label>Principal:</label>
     <input type="number" id="principal" placeholder="Enter principal">
 
     <label>Rate (% per year):</label>
     <input type="number" id="rate" placeholder="Enter rate">
 
-    <label>Time (years):</label>
+    <label>Time:</label>
     <input type="number" id="time" placeholder="Enter time">
+    <select id="timeUnit">
+        <option value="years">Years</option>
+        <option value="months">Months</option>
+        <option value="days">Days</option>
+    </select>
 
     <label>Interest / Amount:</label>
     <input type="number" id="result" placeholder="Enter interest or amount">
@@ -57,11 +63,20 @@
 </div>
 
 <script>
+    function getTimeInYears(time, unit) {
+        if (unit === "months") return time / 12;
+        if (unit === "days") return time / 365;
+        return time;
+    }
+
     function calculateSI() {
         let P = parseFloat(document.getElementById("principal").value);
         let R = parseFloat(document.getElementById("rate").value);
         let T = parseFloat(document.getElementById("time").value);
+        let timeUnit = document.getElementById("timeUnit").value;
         let I = parseFloat(document.getElementById("result").value);
+
+        T = getTimeInYears(T, timeUnit);
 
         if (!I) {
             I = (P * R * T) / 100;
@@ -82,7 +97,10 @@
         let P = parseFloat(document.getElementById("principal").value);
         let R = parseFloat(document.getElementById("rate").value);
         let T = parseFloat(document.getElementById("time").value);
+        let timeUnit = document.getElementById("timeUnit").value;
         let A = parseFloat(document.getElementById("result").value);
+
+        T = getTimeInYears(T, timeUnit);
 
         if (!A) {
             A = P * Math.pow((1 + R / 100), T);
