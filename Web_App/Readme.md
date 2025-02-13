@@ -1,12 +1,10 @@
-Here’s a `README.md` for your **Interest Calculator Web App**:
-
 ---
 
-# Interest Calculator Web App
+# Interest Calculator Web App  
 
-A simple web-based **Interest Calculator** that helps users compute **Simple Interest (SI) and Compound Interest (CI)** based on given inputs.
+A simple web-based **Interest Calculator** that helps users compute **Simple Interest (SI) and Compound Interest (CI)** based on given inputs.  
 
-## 🚀 Features
+## 🚀 Features  
 
 - **Calculate Simple Interest (SI)**  
 - **Calculate Compound Interest (CI)**  
@@ -14,7 +12,7 @@ A simple web-based **Interest Calculator** that helps users compute **Simple Int
 - **Dark Mode** (Enabled by default)  
 - **Reverse Calculation** – Compute missing values like Principal, Rate, or Time  
 
-## 📌 How to Use
+## 📌 How to Use  
 
 1. **Enter the Principal Amount** (if known).  
 2. **Enter the Rate of Interest** (Annual %).  
@@ -25,16 +23,15 @@ A simple web-based **Interest Calculator** that helps users compute **Simple Int
    - 🔵 **Calculate Compound Interest** to compute CI  
    - ⚫ **Change Theme** to toggle between **Light/Dark Mode**  
 
-## 🛠️ Tech Stack
+## 🖼️ Screenshot  
+
+![Interest Calculator](https://github.com/user-attachments/assets/c1c27dd7-e690-44b1-a2f0-56688468c04f)  
+
+## 🛠️ Tech Stack  
 
 - **HTML** (Structure)  
 - **CSS** (Basic Styling)  
 - **JavaScript** (Logic & Functionality)  
-
-## 📷 Screenshot  
-
-![Interest Calculator](![image](https://github.com/user-attachments/assets/c1c27dd7-e690-44b1-a2f0-56688468c04f)
-) *(Replace with actual image link if available)*  
 
 ## 🎯 Future Improvements  
 
@@ -42,10 +39,21 @@ A simple web-based **Interest Calculator** that helps users compute **Simple Int
 - Improve UI/UX  
 - Implement local storage for saving last used values  
 
-## 💡 Contributing
+## 💡 Contributing  
 
-Feel free to fork the repository and submit pull requests with improvements or bug fixes!  
+Contributions are welcome! To contribute:  
+
+1. Fork the repository.  
+2. Create a new branch (`feature-branch`).  
+3. Commit your changes.  
+4. Push to the branch and submit a pull request.  
+
+## 📜 License  
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.  
+
+## 📞 Contact  
+
+Feel free to open an issue or contact **[Gaurav Powar](https://github.com/GauravPowar)** for any queries or issues.  
 
 ---
-
-Let me know if you want to add anything specific! 🚀
