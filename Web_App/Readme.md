@@ -1,5 +1,3 @@
----
-
 # Interest Calculator Web App  
 
 A simple web-based **Interest Calculator** that helps users compute **Simple Interest (SI) and Compound Interest (CI)** based on given inputs.  
@@ -55,5 +53,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## 📞 Contact  
 
 Feel free to open an issue or contact **[Gaurav Powar](https://github.com/GauravPowar)** for any queries or issues.  
-
----
