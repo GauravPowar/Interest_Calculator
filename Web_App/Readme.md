@@ -48,8 +48,8 @@ Contributions are welcome! To contribute:
 
 ## 📜 License  
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.  
+This project is licensed under the MIT License. Please check the [LICENSE](https://github.com/GauravPowar/Interest_Calculator/blob/aa5b41eb5d970023f73c6206a12aa528220e7ca7/LICENSE) file for details.  
 
 ## 📞 Contact  
 
-Feel free to open an issue or contact **[Gaurav Powar](https://github.com/GauravPowar)** for any queries or issues.  
+Please feel free to open an issue or contact **[Gaurav Powar](https://github.com/GauravPowar)** for any questions or issues you might have.
