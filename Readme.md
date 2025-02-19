@@ -30,3 +30,7 @@ Contributions are welcome! To contribute:
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
+## Contact
+Feel free to open an issue or contact [Gaurav Powar](https://github.com/GauravPowar) for any queries or issues.
+
+
