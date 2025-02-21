@@ -9,6 +9,9 @@ Interest Calculator is a standalone offline desktop application for Windows that
 - Offline functionality
 - Lightweight and efficient
 
+## **Preview**  
+![Minimalist Note-Taking App](https://github.com/GauravPowar/Interest_Calculator/blob/main/assets/screenshot_1.png)  
+
 ## Installation
 1. Download the latest release from the [Releases](https://github.com/GauravPowar/Interest_Calculator/releases) section.
 2. Extract the downloaded files.
