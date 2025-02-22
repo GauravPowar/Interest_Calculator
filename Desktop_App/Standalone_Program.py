@@ -1,18 +1,14 @@
 import tkinter as tk
-from tkinter import ttk
-from tkinter import messagebox
+from tkinter import ttk, messagebox
 
 def clear_entry(event):
-    """Clear default text when entry is clicked."""
     if event.widget.get() in default_texts.values():
         event.widget.delete(0, tk.END)
 
 def reset_result():
-    """Clear the result label for new calculations."""
-    result_label.config(text="")
+    result_label.config(text="", fg="black")
 
 def calculate_interest():
-    """Perform interest calculations based on user inputs."""
     reset_result()
     try:
         P = float(principal_entry.get()) if principal_entry.get() and principal_entry.get() not in default_texts.values() else None
@@ -30,55 +26,57 @@ def calculate_interest():
         if interest_type_var.get() == "Simple Interest":
             if result is None:
                 result = (P * R * T) / 100
-                result_label.config(text=f"Simple Interest: {result:.2f}")
+                result_label.config(text=f"Simple Interest: {result:.2f}", fg="green")
             elif P is None:
                 P = (result * 100) / (R * T)
-                result_label.config(text=f"Principal: {P:.2f}")
+                result_label.config(text=f"Principal: {P:.2f}", fg="blue")
             elif R is None:
                 R = (result * 100) / (P * T)
-                result_label.config(text=f"Rate: {R:.2f}%")
+                result_label.config(text=f"Rate: {R:.2f}%", fg="blue")
             elif T is None:
                 T = (result * 100) / (P * R)
-                result_label.config(text=f"Time: {T:.2f} years")
+                result_label.config(text=f"Time: {T:.2f} years", fg="blue")
         else:
             if result is None:
                 result = P * (1 + R / 100) ** T
-                result_label.config(text=f"Compound Amount: {result:.2f}")
+                result_label.config(text=f"Compound Amount: {result:.2f}", fg="green")
             elif P is None:
                 P = result / (1 + R / 100) ** T
-                result_label.config(text=f"Principal: {P:.2f}")
+                result_label.config(text=f"Principal: {P:.2f}", fg="blue")
             elif R is None:
                 R = ((result / P) ** (1 / T) - 1) * 100
-                result_label.config(text=f"Rate: {R:.2f}%")
+                result_label.config(text=f"Rate: {R:.2f}%", fg="blue")
             elif T is None:
                 T = (result / P) ** (1 / (1 + R / 100))
-                result_label.config(text=f"Time: {T:.2f} years")
+                result_label.config(text=f"Time: {T:.2f} years", fg="blue")
     except (ValueError, TypeError):
         messagebox.showerror("Error", "Please enter valid numeric values.")
 
 def toggle_dark_mode():
-    """Switch between dark and light mode."""
-    bg_color = "#222" if dark_mode_var.get() else "white"
-    fg_color = "white" if dark_mode_var.get() else "black"
-    
+    bg_color = "#2E2E2E" if dark_mode_var.get() else "#F5F5F5"
+    fg_color = "#FFFFFF" if dark_mode_var.get() else "#000000"
+    button_bg = "#555" if dark_mode_var.get() else "#DDD"
+    result_label.config(bg=bg_color, fg=fg_color)
     root.config(bg=bg_color)
-    for widget in root.winfo_children():
+    main_frame.config(bg=bg_color)
+    for widget in main_frame.winfo_children():
         try:
             widget.config(bg=bg_color, fg=fg_color)
-        except tk.TclError:  # Ignore widgets that don't support direct color changes
+            if isinstance(widget, ttk.Button):
+                widget.config(style="TButton")
+        except tk.TclError:
             pass
 
-# Initialize main window
 root = tk.Tk()
 root.title("Interest Calculator")
-root.geometry("350x400")
+root.geometry("400x450")
+root.resizable(False, False)
+root.configure(bg="#F5F5F5")
 
-# Variables
+dark_mode_var = tk.BooleanVar()
 interest_type_var = tk.StringVar(value="Simple Interest")
 time_unit_var = tk.StringVar(value="Years")
-dark_mode_var = tk.BooleanVar()
 
-# Default placeholder text dictionary
 default_texts = {
     "principal": "Enter Principal",
     "rate": "Enter Rate (% p.a.)",
@@ -86,40 +84,40 @@ default_texts = {
     "result": "Enter Interest/Amount"
 }
 
-# Widgets
-interest_type_menu = ttk.Combobox(root, textvariable=interest_type_var, values=["Simple Interest", "Compound Interest"])
+style = ttk.Style()
+style.configure("TButton", font=("Arial", 10, "bold"), padding=5, background="#DDD")
+style.configure("TLabel", background="#F5F5F5", font=("Arial", 10))
+
+main_frame = tk.Frame(root, padx=15, pady=15, bg="#F5F5F5")
+main_frame.pack(expand=True, fill=tk.BOTH)
+
+ttk.Label(main_frame, text="Interest Type:").pack()
+interest_type_menu = ttk.Combobox(main_frame, textvariable=interest_type_var, values=["Simple Interest", "Compound Interest"])
 interest_type_menu.pack()
 
-principal_entry = tk.Entry(root)
-principal_entry.insert(0, default_texts["principal"])
-principal_entry.bind("<FocusIn>", clear_entry)
-principal_entry.pack()
+def create_entry(placeholder):
+    entry = ttk.Entry(main_frame, font=("Arial", 10))
+    entry.insert(0, placeholder)
+    entry.bind("<FocusIn>", clear_entry)
+    entry.pack(pady=5, ipady=3)
+    return entry
 
-rate_entry = tk.Entry(root)
-rate_entry.insert(0, default_texts["rate"])
-rate_entry.bind("<FocusIn>", clear_entry)
-rate_entry.pack()
+principal_entry = create_entry(default_texts["principal"])
+rate_entry = create_entry(default_texts["rate"])
+time_entry = create_entry(default_texts["time"])
 
-time_entry = tk.Entry(root)
-time_entry.insert(0, default_texts["time"])
-time_entry.bind("<FocusIn>", clear_entry)
-time_entry.pack()
-
-time_unit_menu = ttk.Combobox(root, textvariable=time_unit_var, values=["Years", "Months", "Days"])
+ttk.Label(main_frame, text="Time Unit:").pack()
+time_unit_menu = ttk.Combobox(main_frame, textvariable=time_unit_var, values=["Years", "Months", "Days"])
 time_unit_menu.pack()
 
-result_entry = tk.Entry(root)
-result_entry.insert(0, default_texts["result"])
-result_entry.bind("<FocusIn>", clear_entry)
-result_entry.pack()
+result_entry = create_entry(default_texts["result"])
 
-calculate_button = tk.Button(root, text="Calculate", command=calculate_interest)
-calculate_button.pack()
+ttk.Button(main_frame, text="Calculate", command=calculate_interest).pack(pady=10)
 
-toggle_dark_button = tk.Checkbutton(root, text="Dark Mode", variable=dark_mode_var, command=toggle_dark_mode)
+toggle_dark_button = ttk.Checkbutton(main_frame, text="Dark Mode", variable=dark_mode_var, command=toggle_dark_mode)
 toggle_dark_button.pack()
 
-result_label = tk.Label(root, text="", font=("Arial", 12, "bold"))
-result_label.pack()
+result_label = tk.Label(main_frame, text="", font=("Arial", 12, "bold"), bg="#F5F5F5")
+result_label.pack(pady=10)
 
 root.mainloop()
