@@ -1,4 +1,4 @@
-# 🖥️ Interest Calculator (Desktop App)
+# 🖥️ Interest Calculator (Desktop Client)
 
 ## 📌 Overview
 This is the **standalone desktop version** of the Interest Calculator. It allows users to calculate **Simple Interest (SI)** and **Compound Interest (CI)** easily.
