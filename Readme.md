@@ -6,7 +6,6 @@ Interest Calculator is a standalone offline desktop application for Windows that
 ## Features
 - Simple and intuitive user interface
 - Supports different types of interest calculations
-- Offline functionality
 - Lightweight and efficient
 
 ## **Preview**  
